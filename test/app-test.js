@@ -1,11 +1,13 @@
 const request = require("supertest");
 const { describe, it } = require("node:test");
 const { createApp } = require("../src/app");
+const Users = require("../src/models/users");
 
 describe("App", () => {
 	describe("POST /login", () => {
-		it("should authenticate and log in an user", (_, done) => {
-			const app = createApp();
+		it("should allow login for a valid user", (_, done) => {
+			const users = new Users();
+			const app = createApp(users);
 
 			request(app)
 				.post("/login")
@@ -15,10 +17,31 @@ describe("App", () => {
 				.expect("location", "/")
 				.end(done);
 		});
+
+		it("should not allow login for an invalid user ", (_, done) => {
+			const users = new Users();
+			const app = createApp(users);
+
+			request(app)
+				.post("/login")
+				.send("username=Riya&password=1234")
+				.expect(403)
+				.end(done);
+		});
 	});
 
 	describe("GET /whoami", () => {
-		it("should send the login status and user credentials", (_, done) => {
+		it("should send the login status as false if no user has logged in", (_, done) => {
+			const app = createApp();
+
+			request(app)
+				.get("/whoami")
+				.expect(200)
+				.expect({ login: false })
+				.end(done);
+		});
+
+		it("should send the login status and user credentials of only existing users", (_, done) => {
 			const app = createApp();
 
 			request(app)
