@@ -1,5 +1,10 @@
+const { createApp } = require("./src/app");
+
 const main = () => {
-	console.log("Hello World");
+	const app = createApp();
+
+	const PORT = 8000;
+	app.listen(PORT, () => console.log("Server is listening to port", PORT));
 };
 
 main();
