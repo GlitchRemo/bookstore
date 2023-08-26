@@ -1,4 +1,4 @@
-const userLogin = (req, res) => {
+const loginUser = (req, res) => {
 	const { username, password } = req.body;
 	const { users } = req.app;
 
@@ -24,4 +24,4 @@ const sendUserCredentials = (req, res) => {
 	res.send({ login: false });
 };
 
-module.exports = { userLogin, sendUserCredentials };
+module.exports = { loginUser, sendUserCredentials };

@@ -52,4 +52,19 @@ describe("App", () => {
 				.end(done);
 		});
 	});
+
+	describe("POST /logout", () => {
+		const app = createApp();
+
+		it("should logout the current logged in user", (_, done) => {
+			request(app)
+				.post("/logout")
+				.set("Cookie", "username=Riya")
+				.send()
+				.expect(301)
+				.expect("set-cookie", /username=;/)
+				.expect("location", "/")
+				.end(done);
+		});
+	});
 });

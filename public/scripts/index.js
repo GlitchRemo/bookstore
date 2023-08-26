@@ -1,3 +1,9 @@
+const postLogoutRequest = () => {
+	fetch("/logout", { method: "post" }).then((res) => {
+		window.location.replace(res.url);
+	});
+};
+
 const renderAuthSection = (username) => {
 	const authSection = document.querySelector("#auth-section");
 
@@ -5,13 +11,14 @@ const renderAuthSection = (username) => {
 	usernameElement.innerText = username;
 
 	const logoutElement = document.createElement("a");
-	logoutElement.innerText = "Logout";
 	logoutElement.href = "";
+	logoutElement.innerText = "Logout";
+	logoutElement.onclick = postLogoutRequest;
 
 	authSection.replaceChildren(usernameElement, logoutElement);
 };
 
-const main = () => {
+const fetchAuthDetailsAndRender = () => {
 	fetch("/whoami")
 		.then((res) => res.json())
 		.then(({ login, username }) => {
@@ -19,6 +26,10 @@ const main = () => {
 				renderAuthSection(username);
 			}
 		});
+};
+
+const main = () => {
+	fetchAuthDetailsAndRender();
 };
 
 window.onload = main;
