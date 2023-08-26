@@ -2,5 +2,4 @@
 
 npm install # will install dependencies
 
-mv git_hooks/pre-commit .git/hooks/
-rmdir git_hooks
+cp git_hooks/* .git/hooks/
