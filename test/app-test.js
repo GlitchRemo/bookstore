@@ -31,7 +31,7 @@ describe("App", () => {
 	});
 
 	describe("GET /whoami", () => {
-		it("should send the login status as false if no user has logged in", (_, done) => {
+		it("should not send credentials of non existing users", (_, done) => {
 			const app = createApp();
 
 			request(app)
@@ -41,7 +41,7 @@ describe("App", () => {
 				.end(done);
 		});
 
-		it("should send the login status and user credentials of only existing users", (_, done) => {
+		it("should send the credentials of existing users", (_, done) => {
 			const app = createApp();
 
 			request(app)
