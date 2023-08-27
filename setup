@@ -2,4 +2,4 @@
 
 npm install # will install dependencies
 
-cp git_hooks/* .git/hooks/
+cp .git_hooks/* .git/hooks/

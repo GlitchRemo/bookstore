@@ -20,14 +20,13 @@ const serveBook = (req, res) => {
 };
 
 const addToFavourite = (req, res) => {
-	const { title } = req.body;
+	const { bookId } = req.body;
 	const { users } = req.app;
 
-	users.addToFavourite(req.cookies.username, title);
+	users.addToFavourite(req.cookies.username, bookId);
 	console.log(users.favourites);
 
-	res.status(201);
-	res.send();
+	res.sendStatus(201);
 };
 
 module.exports = { addToFavourite, serveBook };

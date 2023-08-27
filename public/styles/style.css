@@ -4,11 +4,11 @@
 		Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-.page-heading {
+#page-heading {
 	display: grid;
 	grid-template-columns: 9fr 1fr;
 }
 
-.page-heading > h1 {
+#page-heading > h1 {
 	text-align: center;
 }

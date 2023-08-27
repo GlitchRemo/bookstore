@@ -1,10 +1,10 @@
 const addToFavourite = () => {
-	const title = document.querySelector("title").innerText;
+	const bookId = document.querySelector("title").innerText;
 
 	fetch("/user/favourites", {
 		method: "post",
 		headers: { "content-type": "application/json" },
-		body: JSON.stringify({ title }),
+		body: JSON.stringify({ bookId }),
 	});
 };
 
