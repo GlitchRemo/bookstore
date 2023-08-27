@@ -1,7 +1,9 @@
+const fs = require("fs");
 const request = require("supertest");
 const { describe, it } = require("node:test");
 const { createApp } = require("../src/app");
 const Users = require("../src/models/users");
+const Books = require("../src/models/books");
 
 describe("App", () => {
 	describe("POST /login", () => {
@@ -78,6 +80,34 @@ describe("App", () => {
 				.set("Cookie", "username=Riya")
 				.send({ title: "flamingo" })
 				.expect(201)
+				.end(done);
+		});
+	});
+
+	describe("GET /books/bookId", () => {
+		const booksData = {
+			flamingo: {
+				id: "flamingo",
+				title: "Flamingo",
+				imgSrc: "/flamingo.jpg",
+				description: "Good Book",
+			},
+		};
+
+		const books = new Books(booksData);
+		const app = createApp({}, books);
+
+		it("should send the html of the specified book", (_, done) => {
+			const flamingoHtml = fs.readFileSync(
+				"./test-data/flamingo.html",
+				"utf-8"
+			);
+
+			request(app)
+				.get("/books/flamingo")
+				.expect(200)
+				.expect("content-type", /text\/html/)
+				.expect(flamingoHtml)
 				.end(done);
 		});
 	});

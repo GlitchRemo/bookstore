@@ -1,7 +1,10 @@
 const addToFavourite = () => {
+	const title = document.querySelector("title").innerText;
+
 	fetch("/user/favourites", {
 		method: "post",
-		body: { title: "flamingo" },
+		headers: { "content-type": "application/json" },
+		body: JSON.stringify({ title }),
 	});
 };
 

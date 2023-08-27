@@ -1,5 +1,5 @@
-const { loginUser, sendUserCredentials } = require("../src/handlers/login");
-const { logoutUser } = require("../src/handlers/logout");
+const { loginUser, sendUserCredentials } = require("../handlers/login");
+const { logoutUser } = require("../handlers/logout");
 
 const createAuthRoutes = (app) => {
 	app.post("/login", loginUser);

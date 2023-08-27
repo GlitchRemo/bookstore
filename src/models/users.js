@@ -12,6 +12,10 @@ class Users {
 	addToFavourite(username, bookTitle) {
 		this.#users[0].favourites.push(bookTitle);
 	}
+
+	get favourites() {
+		return this.#users[0].favourites;
+	}
 }
 
 module.exports = Users;
