@@ -1,3 +1,2 @@
-- logout
 - add a book to favourite
 - post review of a book

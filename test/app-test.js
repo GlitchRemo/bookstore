@@ -67,4 +67,18 @@ describe("App", () => {
 				.end(done);
 		});
 	});
+
+	describe("POST /user/favourites", () => {
+		const users = new Users();
+		const app = createApp(users);
+
+		it("should add a book to favourites list of logged in user", (_, done) => {
+			request(app)
+				.post("/user/favourites")
+				.set("Cookie", "username=Riya")
+				.send({ title: "flamingo" })
+				.expect(201)
+				.end(done);
+		});
+	});
 });

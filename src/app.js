@@ -1,7 +1,8 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const { logger } = require("./middlewares/logger");
-const { createAuthRoutes } = require("../router/auth-routes");
+const { createAuthRoutes } = require("../router/auth");
+const { createBookEngagementRoutes } = require("../router/book-engagement");
 
 const createApp = (users) => {
 	const app = express();
@@ -13,6 +14,7 @@ const createApp = (users) => {
 	app.users = users;
 
 	createAuthRoutes(app);
+	createBookEngagementRoutes(app);
 
 	app.use(express.static("public"));
 
