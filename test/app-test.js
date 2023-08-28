@@ -89,15 +89,14 @@ describe("App", () => {
 	});
 
 	describe("GET /books/bookId", () => {
-		const booksData = {
-			flamingo: {
+		const booksData = [
+			{
 				id: "flamingo",
 				title: "Flamingo",
 				imgSrc: "/flamingo.jpg",
 				description: "Good Book",
 			},
-		};
-
+		];
 		it("should send the html of the specified book", (_, done) => {
 			const books = new Books(booksData);
 			const app = createApp({}, books);
@@ -134,8 +133,8 @@ describe("App", () => {
 
 	describe("GET /books/bookId/reviews", () => {
 		it("should send reviews for a particular book", (_, done) => {
-			const booksData = {
-				flamingo: {
+			const booksData = [
+				{
 					id: "flamingo",
 					title: "Flamingo",
 					imgSrc: "/images/flamingo.jpg",
@@ -145,7 +144,7 @@ describe("App", () => {
 						{ username: "Vidita", message: "Nice book" },
 					],
 				},
-			};
+			];
 
 			const books = new Books(booksData);
 			const app = createApp({}, books);

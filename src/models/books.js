@@ -2,8 +2,8 @@ class Books {
 	#books;
 
 	constructor(booksData) {
-		this.#books = booksData || {
-			flamingo: {
+		this.#books = booksData || [
+			{
 				id: "flamingo",
 				title: "Flamingo",
 				imgSrc: "/images/flamingo.jpg",
@@ -13,19 +13,31 @@ class Books {
 
 				reviews: [],
 			},
-		};
+			{
+				id: "atomic-habits",
+				title: "Atomic Habits",
+				imgSrc: "/images/atomic-habits.jpg",
+				description:
+					// eslint-disable-next-line max-len
+					"A supremely practical and useful book. James Clear distills the most fundamental information about habit formation, so you can accomplish more by focusing on less.",
+
+				reviews: [],
+			},
+		];
 	}
 
-	get(id) {
-		return this.#books[id];
+	get(bookId) {
+		return this.#books.find((book) => book.id === bookId);
 	}
 
 	getReviews(bookId) {
-		return this.#books[bookId].reviews;
+		return this.#books.find((book) => book.id === bookId).reviews;
 	}
 
 	addReview(bookId, username, message) {
-		this.#books[bookId].reviews.push({ username, message });
+		this.#books
+			.find((book) => book.id === bookId)
+			.reviews.push({ username, message });
 	}
 }
 
