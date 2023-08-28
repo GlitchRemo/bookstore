@@ -109,6 +109,7 @@ describe("App", () => {
 
 			request(app)
 				.get("/books/flamingo")
+				.set("Cookie", "username=Riya")
 				.expect(200)
 				.expect("content-type", /text\/html/)
 				.expect(flamingoHtml)
