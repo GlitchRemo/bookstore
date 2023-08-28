@@ -11,30 +11,28 @@
 			<h1>BookStop</h1>
 			<div id="name-container"></div>
 		</header>
-		<main>
+		<main id="root-section">
 			<header>
 				<h1 id="title">{{title}}</h1>
 			</header>
 			<article>
-				<div id="img">
-					<img src="{{imgSrc}}" width="10%" height="10%" />
-				</div>
-				<div id="description">{{description}}</div>
-				<input type="button" value="Add to favourite" id="favourite-btn" />
-
-				<section>
+				<article class="book-container">
+					<div>
+						<img src="{{imgSrc}}" id="img" />
+					</div>
+					<p id="description">{{description}}</p>
+				</article>
+				<img src="/images/favourite-prev.png" id="favourite-btn">
+				<section id="form-section">
 					<h1>Reviews</h1>
 					<form>
-						<textarea
+						<input
+							type="text"
 							name="review"
 							id="review-input-box"
-							placeholder="Write a review"
-							cols="30"
-							rows="10"
-							style="resize: none;"
+							placeholder="Add a review..."
 							required
-						></textarea>
-						<input type="submit" value="Submit" />
+						></input>
 					</form>
 				</section>
 				<section id="reviews-container"></section>

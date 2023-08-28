@@ -19,7 +19,7 @@ const setupAddToFavourite = () => {
 
 	favouriteBtn.onclick = () => {
 		addToFavourite();
-		favouriteBtn.style.color = "green";
+		favouriteBtn.src = "/images/favourite-after.png";
 	};
 };
 

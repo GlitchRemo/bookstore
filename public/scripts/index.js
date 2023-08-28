@@ -1,3 +1,18 @@
+const createElement = (tagName, attributes, innerText) => {
+	if (Array.isArray(attributes)) {
+		const element = document.createElement(tagName);
+
+		attributes.map(([name, value]) => element.setAttribute(name, value));
+		element.innerText = innerText;
+
+		return element;
+	}
+
+	const parent = document.createElement(tagName);
+	parent.append(attributes);
+	return parent;
+};
+
 const postLogoutRequest = () => {
 	fetch("/logout", { method: "post" }).then((res) => {
 		window.location.replace(res.url);
@@ -7,17 +22,19 @@ const postLogoutRequest = () => {
 const renderAuthSection = (username) => {
 	const authSection = document.querySelector("#auth-section");
 
-	const usernameElement = document.createElement("p");
-	usernameElement.innerText = username;
+	const usernameElement = createElement("p", [], username);
 
-	const logoutElement = document.createElement("a");
-	logoutElement.href = "";
-	logoutElement.innerText = "Logout";
+	const logoutElement = createElement(
+		"div",
+		createElement("a", [["href", ""]], "Logout")
+	);
+
 	logoutElement.onclick = postLogoutRequest;
 
-	const favouritesElement = document.createElement("a");
-	favouritesElement.href = "/pages/favourites.html";
-	favouritesElement.innerText = "Favourites";
+	const favouritesElement = createElement(
+		"div",
+		createElement("a", [["href", "/pages/favourites.html"]], "Favourites")
+	);
 
 	authSection.replaceChildren(
 		usernameElement,

@@ -9,6 +9,13 @@
 	text-align: center;
 }
 
+#name-container {
+	padding: 0.5em;
+	font-size: 1.5em;
+	border: 1px solid darkgray;
+	border-radius: 10px;
+}
+
 .review {
 	display: flex;
 	gap: 2em;
@@ -16,4 +23,42 @@
 
 .review > :first-child {
 	font-weight: 700;
+}
+
+#root-section {
+	width: 50%;
+	margin: 0 auto;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.book-container {
+	display: flex;
+	gap: 10em;
+	font-size: 1.2em;
+}
+
+#favourite-btn {
+	width: 2em;
+	height: 2em;
+}
+
+#img {
+	width: 15em;
+	height: 20em;
+}
+
+#review-input-box {
+	width: 90%;
+	height: 2em;
+	resize: none;
+}
+
+#reviews-container {
+	padding: 1em;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5em;
 }
