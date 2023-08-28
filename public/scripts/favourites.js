@@ -6,11 +6,11 @@ const fetchAndRenderUsername = () => {
 		});
 };
 
-const createFavouriteElement = (bookId) => {
+const createFavouriteElement = ({ title, bookId }) => {
 	const favouriteElement = document.createElement("a");
 
 	favouriteElement.href = `/books/${bookId}`;
-	favouriteElement.innerText = bookId;
+	favouriteElement.innerText = title;
 
 	return favouriteElement;
 };

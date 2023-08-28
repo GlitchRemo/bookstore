@@ -22,7 +22,7 @@ const postLogoutRequest = () => {
 const renderAuthSection = (username) => {
 	const authSection = document.querySelector("#auth-section");
 
-	const usernameElement = createElement("p", [], username);
+	const usernameElement = createElement("p", [], `Welcome ${username}`);
 
 	const logoutElement = createElement(
 		"div",

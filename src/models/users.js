@@ -17,10 +17,10 @@ class Users {
 		);
 	}
 
-	addToFavourite(username, bookId) {
+	addToFavourite(username, book) {
 		this.#users
 			.find((user) => user.username === username)
-			.favourites.push(bookId);
+			.favourites.push(book);
 	}
 
 	getFavourites(username) {

@@ -7,16 +7,27 @@
 	</head>
 	<body>
 		<header id="page-heading">
-			<h1>BookStop</h1>
+			<section id="logo">
+				<img src="/images/logo.png" id="logo-img" />
+				<p id="logo-text">BookStop</p>
+			</section>
 			<nav id="auth-section">
-				<h3><a href="/pages/login.html" id="login-link">Login</a></h3>
+				<a href="/pages/login.html" id="login-link">Login</a>
 			</nav>
 		</header>
 		<main>
-			<ul>
-				<li><a href="/books/flamingo">Flamingo</a></li>
-				<li><a href="/books/atomic-habits">Atomic Habits</a></li>
-			</ul>
+			<article id="books-container">
+				<div class="book">
+					<img src="/images/flamingo.jpg" class="image" />
+					<div id="book-link"><a href="/books/flamingo">Flamingo</a></div>
+				</div>
+				<div class="book">
+					<img src="/images/atomic-habits.jpg" class="image" />
+					<div id="book-link">
+						<a href="/books/atomic-habits">Atomic Habits</a>
+					</div>
+				</div>
+			</article>
 		</main>
 	</body>
 </html>

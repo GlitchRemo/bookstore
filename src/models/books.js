@@ -30,6 +30,10 @@ class Books {
 		return this.#books.find((book) => book.id === bookId);
 	}
 
+	getTitle(bookId) {
+		return this.#books.find((book) => book.id === bookId).title;
+	}
+
 	getReviews(bookId) {
 		return this.#books.find((book) => book.id === bookId).reviews;
 	}

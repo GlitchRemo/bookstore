@@ -19,18 +19,6 @@ const serveBook = (req, res) => {
 	generateAndSendHtml(books.get(bookId), res);
 };
 
-const addToFavourite = (req, res) => {
-	const { bookId } = req.body;
-	const { users } = req.app;
-
-	const username = req.cookies.username;
-
-	users.addToFavourite(username, bookId);
-	console.log(users.getFavourites(username));
-
-	res.sendStatus(201);
-};
-
 const addReview = (req, res) => {
 	const { books } = req.app;
 	const { message } = req.body;
@@ -50,4 +38,4 @@ const sendReviews = (req, res) => {
 	res.send(books.getReviews(bookId));
 };
 
-module.exports = { addToFavourite, serveBook, addReview, sendReviews };
+module.exports = { serveBook, addReview, sendReviews };

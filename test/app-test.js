@@ -74,20 +74,6 @@ describe("App", () => {
 		});
 	});
 
-	describe("POST /user/favourites", () => {
-		it("should add a book to favourites list of logged in user", (_, done) => {
-			const users = new Users();
-			const app = createApp(users);
-
-			request(app)
-				.post("/user/favourites")
-				.set("Cookie", "username=Riya")
-				.send({ bookId: "flamingo" })
-				.expect(201)
-				.end(done);
-		});
-	});
-
 	describe("GET /books/bookId", () => {
 		const booksData = [
 			{
@@ -171,6 +157,21 @@ describe("App", () => {
 				.expect(301)
 				.expect("set-cookie", "username=Sauma; Path=/")
 				.expect("location", "/")
+				.end(done);
+		});
+	});
+
+	describe("POST /user/favourites", () => {
+		it("should add a book to favourites list of logged in user", (_, done) => {
+			const users = new Users();
+			const books = new Books();
+			const app = createApp(users, books);
+
+			request(app)
+				.post("/user/favourites")
+				.set("Cookie", "username=Riya")
+				.send({ bookId: "flamingo", title: "Flamingos" })
+				.expect(201)
 				.end(done);
 		});
 	});
