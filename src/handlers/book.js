@@ -35,10 +35,17 @@ const addReview = (req, res) => {
 	const { bookId } = req.params;
 
 	books.addReview(bookId, req.cookies.username, message);
-	console.log(books.getReviews());
+	console.log(books.getReviews("flamingo"));
 
 	res.status(201);
 	res.json({ username: req.cookies.username, message });
 };
 
-module.exports = { addToFavourite, serveBook, addReview };
+const sendReviews = (req, res) => {
+	const { books } = req.app;
+	const { bookId } = req.params;
+
+	res.send(books.getReviews(bookId));
+};
+
+module.exports = { addToFavourite, serveBook, addReview, sendReviews };

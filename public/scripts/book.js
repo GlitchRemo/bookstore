@@ -37,7 +37,7 @@ const createReviewElement = ({ username, message }) => {
 const appendReview = (review) => {
 	const reviewsContainer = document.querySelector("#reviews-container");
 	const reviewElement = createReviewElement(review);
-	reviewsContainer.append(reviewElement);
+	reviewsContainer.prepend(reviewElement);
 };
 
 const getReview = () => {
@@ -55,6 +55,20 @@ const fetchAndAddReview = () => {
 	})
 		.then((res) => res.json())
 		.then(appendReview);
+};
+
+const renderReviews = (reviews) => {
+	const reviewsContainer = document.querySelector("#reviews-container");
+	const reviewElements = reviews.reverse().map(createReviewElement);
+	reviewsContainer.append(...reviewElements);
+};
+
+const fetchAndRenderReviews = () => {
+	const bookId = document.querySelector("title").innerText;
+
+	fetch(`/books/${bookId}/reviews`)
+		.then((res) => res.json())
+		.then(renderReviews);
 };
 
 const setupReviewForm = () => {
@@ -84,6 +98,7 @@ const fetchAndRenderUsername = () => {
 const main = () => {
 	fetchAndRenderUsername();
 	setupAddToFavourite();
+	fetchAndRenderReviews();
 	setupReviewForm();
 };
 

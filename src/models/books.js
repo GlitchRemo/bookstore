@@ -21,7 +21,7 @@ class Books {
 	}
 
 	getReviews(bookId) {
-		return this.#books.flamingo.reviews;
+		return this.#books[bookId].reviews;
 	}
 
 	addReview(bookId, username, message) {

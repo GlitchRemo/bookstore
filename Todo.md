@@ -1,8 +1,7 @@
+- show reviews of a book
+- show favourites of a user in hompage
 - store data in file
-- do not allow to access book if user is not signed in
-- name & logout in every page
-- home link in every page
-- site name in every page
+
 - read book
 - download book
 - add a book

@@ -16,7 +16,7 @@ const postSignupDetails = () => {
 			return;
 		}
 
-		alert("Bad credentials");
+		alert("Wrong credentials");
 	});
 };
 

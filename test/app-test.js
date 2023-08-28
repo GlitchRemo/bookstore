@@ -132,6 +132,35 @@ describe("App", () => {
 		});
 	});
 
+	describe("GET /books/bookId/reviews", () => {
+		it("should send reviews for a particular book", (_, done) => {
+			const booksData = {
+				flamingo: {
+					id: "flamingo",
+					title: "Flamingo",
+					imgSrc: "/images/flamingo.jpg",
+					description: "Good Book",
+					reviews: [
+						{ username: "Riya", message: "Good book" },
+						{ username: "Vidita", message: "Nice book" },
+					],
+				},
+			};
+
+			const books = new Books(booksData);
+			const app = createApp({}, books);
+
+			request(app)
+				.get("/books/flamingo/reviews")
+				.expect(200)
+				.expect([
+					{ username: "Riya", message: "Good book" },
+					{ username: "Vidita", message: "Nice book" },
+				])
+				.end(done);
+		});
+	});
+
 	describe("POST /register", () => {
 		it("should create an user account", (_, done) => {
 			const users = new Users();
