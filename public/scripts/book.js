@@ -23,8 +23,8 @@ const setupAddToFavourite = () => {
 	};
 };
 
-const createReviewElement = ({ name, message }) => {
-	const nameElement = createElement("div", name);
+const createReviewElement = ({ username, message }) => {
+	const nameElement = createElement("div", username);
 	const messageElement = createElement("div", message);
 
 	const reviewElement = document.createElement("article");

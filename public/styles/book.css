@@ -8,3 +8,12 @@
 	width: 90%;
 	text-align: center;
 }
+
+.review {
+	display: flex;
+	gap: 2em;
+}
+
+.review > :first-child {
+	font-weight: 700;
+}
