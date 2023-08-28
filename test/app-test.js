@@ -115,4 +115,19 @@ describe("App", () => {
 				.end(done);
 		});
 	});
+
+	describe("POST books/bookId/review", () => {
+		it("should add a review to the book with logged in username", (_, done) => {
+			const books = new Books();
+			const app = createApp({}, books);
+
+			request(app)
+				.post("/books/flamingo/review")
+				.set("Cookie", "username=Riya")
+				.send({ message: "Nice Book" })
+				.expect(201)
+				.expect({ name: "Riya", message: "Nice Book" })
+				.end(done);
+		});
+	});
 });

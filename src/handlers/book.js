@@ -29,4 +29,16 @@ const addToFavourite = (req, res) => {
 	res.sendStatus(201);
 };
 
-module.exports = { addToFavourite, serveBook };
+const addReview = (req, res) => {
+	const { books } = req.app;
+	const { message } = req.body;
+	const { bookId } = req.params;
+
+	books.addReview(bookId, req.cookies.username, message);
+	console.log(books.getReviews());
+
+	res.status(201);
+	res.json({ name: req.cookies.username, message });
+};
+
+module.exports = { addToFavourite, serveBook, addReview };

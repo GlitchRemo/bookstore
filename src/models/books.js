@@ -19,6 +19,14 @@ class Books {
 	get(id) {
 		return this.#books[id];
 	}
+
+	getReviews(bookId) {
+		return this.#books.flamingo.reviews;
+	}
+
+	addReview(bookId, username, message) {
+		this.#books[bookId].reviews.push({ username, message });
+	}
 }
 
 module.exports = Books;
