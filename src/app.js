@@ -4,6 +4,7 @@ const cookieParser = require("cookie-parser");
 const { logger } = require("./middlewares/logger");
 const { createAuthRoutes } = require("./router/auth");
 const { createBookRoutes } = require("./router/book");
+const { createUserRoutes } = require("./router/user");
 
 const createApp = (users, books) => {
 	const app = express();
@@ -18,6 +19,7 @@ const createApp = (users, books) => {
 
 	createAuthRoutes(app);
 	createBookRoutes(app);
+	createUserRoutes(app);
 
 	app.use(express.static("public"));
 

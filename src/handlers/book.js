@@ -23,8 +23,10 @@ const addToFavourite = (req, res) => {
 	const { bookId } = req.body;
 	const { users } = req.app;
 
-	users.addToFavourite(req.cookies.username, bookId);
-	console.log(users.favourites);
+	const username = req.cookies.username;
+
+	users.addToFavourite(username, bookId);
+	console.log(users.getFavourites(username));
 
 	res.sendStatus(201);
 };

@@ -23,7 +23,7 @@ const setupAddToFavourite = () => {
 	};
 };
 
-const createReviewElement = ({ username, message }) => {
+const createFavouriteElement = ({ username, message }) => {
 	const nameElement = createElement("div", username);
 	const messageElement = createElement("div", message);
 
@@ -36,7 +36,7 @@ const createReviewElement = ({ username, message }) => {
 
 const appendReview = (review) => {
 	const reviewsContainer = document.querySelector("#reviews-container");
-	const reviewElement = createReviewElement(review);
+	const reviewElement = createFavouriteElement(review);
 	reviewsContainer.prepend(reviewElement);
 };
 
@@ -59,7 +59,7 @@ const fetchAndAddReview = () => {
 
 const renderReviews = (reviews) => {
 	const reviewsContainer = document.querySelector("#reviews-container");
-	const reviewElements = reviews.reverse().map(createReviewElement);
+	const reviewElements = reviews.reverse().map(createFavouriteElement);
 	reviewsContainer.append(...reviewElements);
 };
 

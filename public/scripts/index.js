@@ -15,7 +15,15 @@ const renderAuthSection = (username) => {
 	logoutElement.innerText = "Logout";
 	logoutElement.onclick = postLogoutRequest;
 
-	authSection.replaceChildren(usernameElement, logoutElement);
+	const favouritesElement = document.createElement("a");
+	favouritesElement.href = "/pages/favourites.html";
+	favouritesElement.innerText = "Favourites";
+
+	authSection.replaceChildren(
+		usernameElement,
+		logoutElement,
+		favouritesElement
+	);
 };
 
 const fetchAndRenderUsername = () => {

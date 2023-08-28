@@ -18,11 +18,13 @@ class Users {
 	}
 
 	addToFavourite(username, bookId) {
-		this.#users[0].favourites.push(bookId);
+		this.#users
+			.find((user) => user.username === username)
+			.favourites.push(bookId);
 	}
 
-	get favourites() {
-		return this.#users[0].favourites;
+	getFavourites(username) {
+		return this.#users.find((user) => user.username === username).favourites;
 	}
 }
 

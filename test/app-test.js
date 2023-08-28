@@ -175,4 +175,31 @@ describe("App", () => {
 				.end(done);
 		});
 	});
+
+	describe("GET /user/favourites", () => {
+		it("should favourite books of logged in user", (_, done) => {
+			const usersData = [
+				{
+					username: "Riya",
+					password: "123",
+					favourites: ["flamingo", "pikachu"],
+				},
+				{
+					username: "Vidita",
+					password: "123",
+					favourites: ["flamingo"],
+				},
+			];
+
+			const users = new Users(usersData);
+			const app = createApp(users);
+
+			request(app)
+				.get("/user/favourites")
+				.set("Cookie", "username=Vidita")
+				.expect(200)
+				.expect(["flamingo"])
+				.end(done);
+		});
+	});
 });
