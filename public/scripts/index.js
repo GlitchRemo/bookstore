@@ -18,7 +18,7 @@ const renderAuthSection = (username) => {
 	authSection.replaceChildren(usernameElement, logoutElement);
 };
 
-const fetchAuthDetailsAndRender = () => {
+const fetchAndRenderUsername = () => {
 	fetch("/whoami")
 		.then((res) => res.json())
 		.then(({ login, username }) => {
@@ -29,7 +29,7 @@ const fetchAuthDetailsAndRender = () => {
 };
 
 const main = () => {
-	fetchAuthDetailsAndRender();
+	fetchAndRenderUsername();
 };
 
 window.onload = main;

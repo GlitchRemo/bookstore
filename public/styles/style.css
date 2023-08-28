@@ -5,6 +5,7 @@
 }
 
 #page-heading {
+	padding: 2em;
 	display: grid;
 	grid-template-columns: 9fr 1fr;
 }

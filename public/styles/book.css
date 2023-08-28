@@ -1,0 +1,10 @@
+#page-heading {
+	padding: 2em;
+	display: flex;
+	align-items: center;
+}
+
+#page-heading > h1 {
+	width: 90%;
+	text-align: center;
+}

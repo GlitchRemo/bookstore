@@ -2,13 +2,19 @@
 <html lang="en">
 	<head>
 		<title>{{id}}</title>
+		<link rel="stylesheet" href="/styles/book.css" />
 		<script src="/scripts/book.js"></script>
 	</head>
 	<body>
-		<header>
-			<h1 id="title">{{title}}</h1>
+		<header id="page-heading">
+			<a href="/"><< Home</a>
+			<h1>BookStop</h1>
+			<div id="name-container"></div>
 		</header>
 		<main>
+			<header>
+				<h1 id="title">{{title}}</h1>
+			</header>
 			<article>
 				<div id="img">
 					<img src="{{imgSrc}}" width="10%" height="10%" />

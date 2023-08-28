@@ -67,7 +67,22 @@ const setupReviewForm = () => {
 	};
 };
 
+const postLogoutRequest = () => {
+	fetch("/logout", { method: "post" }).then((res) => {
+		window.location.replace(res.url);
+	});
+};
+
+const fetchAndRenderUsername = () => {
+	fetch("/whoami")
+		.then((res) => res.json())
+		.then(({ username }) => {
+			document.querySelector("#name-container").innerText = username;
+		});
+};
+
 const main = () => {
+	fetchAndRenderUsername();
 	setupAddToFavourite();
 	setupReviewForm();
 };

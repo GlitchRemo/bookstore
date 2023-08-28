@@ -2,12 +2,12 @@
 	box-sizing: border-box;
 	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
 		Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-	font-size: 20px;
 }
 
 #page {
 	width: 40%;
 	margin: 10em auto;
+
 	border: 1px solid black;
 	border-radius: 1.2em;
 
@@ -17,13 +17,20 @@
 	align-items: center;
 }
 
-#page-heading > * {
-	font-size: 3em;
+#page-heading {
+	padding: 2em;
+	display: flex;
+	align-items: center;
+}
+
+#page-heading > h1 {
+	width: 90%;
+	text-align: center;
 }
 
 form {
 	width: 100%;
-	padding: 3em 0em;
+	padding: 3em 5em;
 
 	display: flex;
 	gap: 2em;
@@ -44,10 +51,20 @@ fieldset {
 #auth-btn {
 	width: 87%;
 	height: 3em;
+	font-size: 1.2em;
 }
 
 #password,
 #username {
 	width: 90%;
 	padding: 1em 2em;
+	font-size: 1em;
+}
+
+#form-footer {
+	display: flex;
+	align-items: center;
+	gap: 1em;
+
+	font-size: 1.2em;
 }

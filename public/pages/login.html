@@ -6,8 +6,12 @@
 		<script src="/scripts/login.js"></script>
 	</head>
 	<body>
+		<header id="page-heading">
+			<a href="/"><< Home</a>
+			<h1>BookStop</h1>
+		</header>
 		<main id="page">
-			<header id="page-heading">
+			<header id="form-heading">
 				<h1>Login</h1>
 			</header>
 			<form id="login-form">
@@ -28,8 +32,11 @@
 					/>
 				</fieldset>
 				<input type="submit" value="Login" id="auth-btn" />
+				<div id="form-footer">
+					<p>Don't have an account?</p>
+					<div><a href="/pages/signup.html">Sign Up</a></div>
+				</div>
 			</form>
-			<p>Don't have an account? <a href="/pages/signup.html">Sign Up</a></p>
 		</main>
 	</body>
 </html>
