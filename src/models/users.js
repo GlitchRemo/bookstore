@@ -3,12 +3,18 @@ class Users {
 
 	constructor(usersData) {
 		this.#users = usersData || [
-			{ name: "Riya", password: "123", favourites: [] },
+			{ username: "Riya", password: "123", favourites: [] },
 		];
 	}
 
+	add(username, password) {
+		this.#users.push({ username, password, favourites: [] });
+	}
+
 	authenticate(username, password) {
-		return username === "Riya" && password === "123";
+		return this.#users.some(
+			(user) => user.username === username && user.password === password
+		);
 	}
 
 	addToFavourite(username, bookId) {

@@ -38,7 +38,7 @@ const addReview = (req, res) => {
 	console.log(books.getReviews());
 
 	res.status(201);
-	res.json({ name: req.cookies.username, message });
+	res.json({ username: req.cookies.username, message });
 };
 
 module.exports = { addToFavourite, serveBook, addReview };

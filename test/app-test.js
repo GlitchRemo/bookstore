@@ -12,7 +12,7 @@ describe("App", () => {
 		let usersData, users, app;
 
 		beforeEach(() => {
-			usersData = [{ name: "Riya", password: "123", favourites: [] }];
+			usersData = [{ username: "Riya", password: "123", favourites: [] }];
 			users = new Users(usersData);
 			app = createApp(users);
 		});
@@ -21,7 +21,7 @@ describe("App", () => {
 			request(app)
 				.post("/login")
 				.send("username=Riya&password=123")
-				.expect(301)
+				.expect(303)
 				.expect("set-cookie", "username=Riya; Path=/")
 				.expect("location", "/")
 				.end(done);
@@ -116,7 +116,7 @@ describe("App", () => {
 		});
 	});
 
-	describe("POST books/bookId/review", () => {
+	describe("POST /books/bookId/review", () => {
 		it("should add a review to the book with logged in username", (_, done) => {
 			const books = new Books();
 			const app = createApp({}, books);
@@ -126,7 +126,22 @@ describe("App", () => {
 				.set("Cookie", "username=Riya")
 				.send({ message: "Nice Book" })
 				.expect(201)
-				.expect({ name: "Riya", message: "Nice Book" })
+				.expect({ username: "Riya", message: "Nice Book" })
+				.end(done);
+		});
+	});
+
+	describe("POST /register", () => {
+		it("should create an user account", (_, done) => {
+			const users = new Users();
+			const app = createApp(users);
+
+			request(app)
+				.post("/register")
+				.send({ username: "Sauma", password: "1234" })
+				.expect(301)
+				.expect("set-cookie", "username=Sauma; Path=/")
+				.expect("location", "/")
 				.end(done);
 		});
 	});

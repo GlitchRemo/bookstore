@@ -6,11 +6,12 @@ const loginUser = (req, res) => {
 
 	if (isValidUser) {
 		res.cookie("username", username);
-		res.redirect(301, "/");
+		res.redirect(303, "/");
 		return;
 	}
 
-	res.send(403); //client can use this status code to warn and reload the login page
+	// eslint-disable-next-line max-len
+	res.sendStatus(403); //client can use this status code to warn and reload the login page
 };
 
 const isUserLoggedIn = (req) => req.cookies?.username;

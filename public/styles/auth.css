@@ -18,10 +18,10 @@
 }
 
 #page-heading > * {
-	font-size: 2em;
+	font-size: 3em;
 }
 
-#login-form {
+form {
 	width: 100%;
 	padding: 3em 0em;
 
@@ -41,7 +41,7 @@ fieldset {
 	align-items: center;
 }
 
-#login-btn {
+#auth-btn {
 	width: 87%;
 	height: 3em;
 }
