@@ -1,5 +1,5 @@
-- show favourites of a user in hompage
-- store data in file
+- write test for authenticate middleware
+- divide app-test.js into files
 
 - read book
 - download book

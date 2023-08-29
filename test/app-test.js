@@ -6,6 +6,11 @@ const { describe, it, beforeEach } = require("node:test");
 const Users = require("../src/models/users");
 const Books = require("../src/models/books");
 const { createApp } = require("../src/app");
+const StorageService = require("../src/storage-service");
+
+const mockFs = {
+	writeFile: (filePath, content, onSave) => onSave(),
+};
 
 describe("App", () => {
 	describe("POST /login", () => {
@@ -74,6 +79,22 @@ describe("App", () => {
 		});
 	});
 
+	describe("POST /register", () => {
+		it("should create an user account", (_, done) => {
+			const users = new Users([]);
+			const usersStorage = new StorageService(mockFs);
+			const app = createApp(users, {}, usersStorage);
+
+			request(app)
+				.post("/register")
+				.send({ username: "Sauma", password: "1234" })
+				.expect(301)
+				.expect("set-cookie", "username=Sauma; Path=/")
+				.expect("location", "/")
+				.end(done);
+		});
+	});
+
 	describe("GET /books/bookId", () => {
 		const booksData = [
 			{
@@ -83,6 +104,7 @@ describe("App", () => {
 				description: "Good Book",
 			},
 		];
+
 		it("should send the html of the specified book", (_, done) => {
 			const books = new Books(booksData);
 			const app = createApp({}, books);
@@ -104,8 +126,19 @@ describe("App", () => {
 
 	describe("POST /books/bookId/review", () => {
 		it("should add a review to the book with logged in username", (_, done) => {
-			const books = new Books();
-			const app = createApp({}, books);
+			const booksData = [
+				{
+					id: "flamingo",
+					title: "Flamingo",
+					imgSrc: "/flamingo.jpg",
+					description: "Good Book",
+					reviews: [],
+				},
+			];
+
+			const books = new Books(booksData);
+			const booksStorage = new StorageService(mockFs);
+			const app = createApp({}, books, {}, booksStorage);
 
 			request(app)
 				.post("/books/flamingo/review")
@@ -146,26 +179,35 @@ describe("App", () => {
 		});
 	});
 
-	describe("POST /register", () => {
-		it("should create an user account", (_, done) => {
-			const users = new Users();
-			const app = createApp(users);
-
-			request(app)
-				.post("/register")
-				.send({ username: "Sauma", password: "1234" })
-				.expect(301)
-				.expect("set-cookie", "username=Sauma; Path=/")
-				.expect("location", "/")
-				.end(done);
-		});
-	});
-
 	describe("POST /user/favourites", () => {
 		it("should add a book to favourites list of logged in user", (_, done) => {
-			const users = new Users();
-			const books = new Books();
-			const app = createApp(users, books);
+			const usersData = [
+				{
+					username: "Riya",
+					password: "123",
+					favourites: ["flamingo"],
+				},
+				{
+					username: "Vidita",
+					password: "123",
+					favourites: ["flamingo"],
+				},
+			];
+
+			const booksData = [
+				{
+					id: "flamingo",
+					title: "Flamingo",
+					imgSrc: "/flamingo.jpg",
+					description: "Good Book",
+				},
+			];
+
+			const users = new Users(usersData);
+			const books = new Books(booksData);
+			const usersStorage = new StorageService(mockFs);
+
+			const app = createApp(users, books, usersStorage);
 
 			request(app)
 				.post("/user/favourites")

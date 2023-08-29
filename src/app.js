@@ -5,7 +5,7 @@ const { logger } = require("./middlewares/logger");
 const { createAuthRoutes } = require("./router/auth");
 const { createBookRoutes } = require("./router/book");
 
-const createApp = (users, books) => {
+const createApp = (users, books, usersStorage, booksStorage) => {
 	const app = express();
 
 	app.use(logger);
@@ -15,6 +15,8 @@ const createApp = (users, books) => {
 
 	app.users = users;
 	app.books = books;
+	app.usersStorage = usersStorage;
+	app.booksStorage = booksStorage;
 
 	createAuthRoutes(app);
 	createBookRoutes(app);

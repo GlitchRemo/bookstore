@@ -1,11 +1,12 @@
 const registerUser = (req, res) => {
 	const { username, password } = req.body;
-	const { users } = req.app;
+	const { users, usersStorage } = req.app;
 
 	users.add(username, password);
-
-	res.cookie("username", username);
-	res.redirect(301, "/");
+	usersStorage.update(users.details, () => {
+		res.cookie("username", username);
+		res.redirect(301, "/");
+	});
 };
 
 module.exports = { registerUser };

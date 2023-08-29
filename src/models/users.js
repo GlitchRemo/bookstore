@@ -2,9 +2,7 @@ class Users {
 	#users;
 
 	constructor(usersData) {
-		this.#users = usersData || [
-			{ username: "Riya", password: "123", favourites: [] },
-		];
+		this.#users = usersData;
 	}
 
 	add(username, password) {
@@ -25,6 +23,10 @@ class Users {
 
 	getFavourites(username) {
 		return this.#users.find((user) => user.username === username).favourites;
+	}
+
+	get details() {
+		return this.#users;
 	}
 }
 

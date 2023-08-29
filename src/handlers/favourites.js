@@ -7,14 +7,16 @@ const sendFavourites = (req, res) => {
 
 const addToFavourite = (req, res) => {
 	const { bookId } = req.body;
-	const { users, books } = req.app;
+	const { users, books, usersStorage } = req.app;
 
 	const username = req.cookies.username;
 
 	const title = books.getTitle(bookId);
 	users.addToFavourite(username, { bookId, title });
 
-	res.sendStatus(201);
+	usersStorage.update(users.details, () => {
+		res.sendStatus(201);
+	});
 };
 
 module.exports = { sendFavourites, addToFavourite };
