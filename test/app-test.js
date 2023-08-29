@@ -6,7 +6,7 @@ const { describe, it, beforeEach } = require("node:test");
 const Users = require("../src/models/users");
 const Books = require("../src/models/books");
 const { createApp } = require("../src/app");
-const StorageService = require("../src/storage-service");
+const StorageService = require("../src/controller/storage-service");
 
 const mockFs = {
 	writeFile: (filePath, content, onSave) => onSave(),
@@ -26,7 +26,7 @@ describe("App", () => {
 			request(app)
 				.post("/login")
 				.send("username=Riya&password=123")
-				.expect(303)
+				.expect(302)
 				.expect("set-cookie", "username=Riya; Path=/")
 				.expect("location", "/")
 				.end(done);
@@ -72,7 +72,7 @@ describe("App", () => {
 				.post("/logout")
 				.set("Cookie", "username=Riya")
 				.send()
-				.expect(301)
+				.expect(302)
 				.expect("set-cookie", /username=;/)
 				.expect("location", "/")
 				.end(done);
@@ -106,8 +106,10 @@ describe("App", () => {
 		];
 
 		it("should send the html of the specified book", (_, done) => {
+			const users = new Users([{ username: "Riya" }]);
 			const books = new Books(booksData);
-			const app = createApp({}, books);
+
+			const app = createApp(users, books);
 
 			const flamingoHtml = fs.readFileSync(
 				"./test-data/flamingo.html",

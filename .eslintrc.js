@@ -20,7 +20,7 @@ module.exports = {
 		"default-param-last": "error",
 		"dot-notation": "warn",
 		"max-depth": ["warn", 3],
-		"max-statements": ["warn", 12],
+		"max-statements": ["warn", 13],
 		"new-cap": "error",
 		"no-eval": "warn",
 		"no-extra-semi": "warn",

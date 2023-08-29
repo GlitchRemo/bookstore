@@ -25,6 +25,10 @@ class Users {
 		return this.#users.find((user) => user.username === username).favourites;
 	}
 
+	isValid(username) {
+		return this.#users.some((user) => user.username === username);
+	}
+
 	get details() {
 		return this.#users;
 	}

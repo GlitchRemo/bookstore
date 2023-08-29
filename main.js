@@ -3,7 +3,7 @@ const fs = require("fs");
 const Books = require("./src/models/books");
 const Users = require("./src/models/users");
 const { createApp } = require("./src/app");
-const StorageService = require("./src/storage-service");
+const StorageService = require("./src/controller/storage-service");
 
 const USERS_STORAGE_PATH = "./users-storage.json";
 const BOOKS_STORAGE_PATH = "./books-storage.json";
@@ -17,7 +17,7 @@ const main = () => {
 
 	const app = createApp(users, books, usersStorage, booksStorage);
 
-	const PORT = 9000;
+	const PORT = 8000;
 	app.listen(PORT, () => console.log("Server is listening to port", PORT));
 };
 

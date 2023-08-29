@@ -1,6 +1,6 @@
 const { serveBook, addReview, sendReviews } = require("../handlers/book");
 const { addToFavourite, sendFavourites } = require("../handlers/favourites");
-const { authenticate } = require("../middlewares/authenticate");
+const { authenticate } = require("../middleware/authenticate");
 
 const createBookRoutes = (app) => {
 	app.get("/books/:bookId", authenticate, serveBook);

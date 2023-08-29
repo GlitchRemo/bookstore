@@ -1,7 +1,7 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
 
-const { logger } = require("./middlewares/logger");
+const { logger } = require("./middleware/logger");
 const { createAuthRoutes } = require("./router/auth");
 const { createBookRoutes } = require("./router/book");
 

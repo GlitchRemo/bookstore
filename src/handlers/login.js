@@ -6,7 +6,7 @@ const loginUser = (req, res) => {
 
 	if (isValidUser) {
 		res.cookie("username", username);
-		res.redirect(303, "/");
+		res.redirect(302, "/");
 		return;
 	}
 
