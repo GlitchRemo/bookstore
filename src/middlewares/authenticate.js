@@ -1,10 +1,11 @@
 const authenticate = (req, res, next) => {
 	if (req.cookies.username) {
+		//check for valid user
 		next();
 		return;
 	}
 
-	res.redirect(301, "/pages/login.html");
+	res.redirect(303, "/pages/login.html");
 };
 
 module.exports = { authenticate };
