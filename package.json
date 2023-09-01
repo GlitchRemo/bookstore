@@ -4,9 +4,10 @@
 	"description": "",
 	"main": "main.js",
 	"scripts": {
-		"test": "node --test",
+		"test": "node --test --test-reporter spec",
 		"lint": "npx eslint .",
-		"start": "node --watch main.js",
+		"start": "node main.js",
+		"dev": "node --watch main.js",
 		"coverage": "nyc npm run test"
 	},
 	"keywords": [],
