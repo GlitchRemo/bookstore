@@ -14,7 +14,7 @@ const addToFavourite = (req, res) => {
 	const title = books.getTitle(bookId);
 	users.addToFavourite(username, { bookId, title });
 
-	usersStorage.update(users.details, () => {
+	usersStorage.update(users.details).then(() => {
 		res.sendStatus(201);
 	});
 };

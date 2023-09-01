@@ -15,8 +15,12 @@ class StorageService {
 		return JSON.parse(this.#fs.readFileSync(this.#storagePath, "utf-8"));
 	}
 
-	update(data, onSave) {
-		this.#fs.writeFile(this.#storagePath, JSON.stringify(data), onSave);
+	update(data) {
+		return new Promise((resolve) => {
+			this.#fs.writeFile(this.#storagePath, JSON.stringify(data), () =>
+				resolve()
+			);
+		});
 	}
 }
 

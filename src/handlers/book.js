@@ -26,7 +26,7 @@ const addReview = (req, res) => {
 
 	books.addReview(bookId, req.cookies.username, message);
 
-	booksStorage.update(books.details, () => {
+	booksStorage.update(books.details).then(() => {
 		res.status(201);
 		res.json({ username: req.cookies.username, message });
 	});
