@@ -17,7 +17,7 @@ const main = () => {
 
 	const app = createApp(users, books, usersStorage, booksStorage);
 
-	const PORT = 8000;
+	const PORT = process.env.PORT || 8000;
 	app.listen(PORT, () => console.log("Server is listening to port", PORT));
 };
 
