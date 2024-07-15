@@ -3,13 +3,13 @@ class StorageService {
 	#storagePath;
 
 	constructor(fs, storagePath) {
-		this.#fs = fs;
+		this.#fs = fs
 		this.#storagePath = storagePath;
 	}
 
 	fetch() {
 		if (!this.#fs.existsSync(this.#storagePath)) {
-			this.#fs.writeFileSync(this.#storagePath, "[]");
+		     	this.#fs.writeFileSync(this.#storagePath, "[]")
 		}
 
 		return JSON.parse(this.#fs.readFileSync(this.#storagePath, "utf-8"));
